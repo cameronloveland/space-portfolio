@@ -3,6 +3,7 @@ import { Logs, Projects } from '../components/hud';
 import { Terminal } from '../components/hud';
 import { RadioPlayer } from '../components/hud';
 import { getReposWithReadme } from '../api/github';
+import { publicPath } from '@/lib/publicPath';
 
 
 export default async function Home() {
@@ -23,14 +24,14 @@ export default async function Home() {
           <div className="absolute inset-0 pointer-events-none z-0">
             <div className="absolute inset-0 bg-gradient-to-tr from-cyan-900/9 to-transparent" />
             <img
-              src="/glass-texture.png"
+              src={publicPath("/glass-texture.png")}
               alt="glass texture"
               className="w-full h-full object-cover opacity-10 mix-blend-screen fixed"
             />
           </div>
 
           <img
-            src="/cockpit-hud.png"
+            src={publicPath("/cockpit-hud.png")}
             alt="HUD Overlay"
             className="hidden md:block fixed top-0 left-1/2 w-screen h-screen -translate-x-1/2 z-0 pointer-events-none"
           />

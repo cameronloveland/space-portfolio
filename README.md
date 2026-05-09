@@ -1,12 +1,13 @@
-# cameronloveland.github.io
+# space-portfolio
 
-This is my personal portfolio and visualization showcase site, built with **Next.js** and **React**. It’s statically exported for GitHub Pages hosting, so everything runs fast and clean!
+Futuristic space HUD portfolio, built with **Next.js** and **React**. It’s statically exported for GitHub Pages under the `cameronloveland/space-portfolio` project site.
 
 ---
 
 ## 🚀 Local Development
 
 ```bash
+cd portfolio
 npm install
 npm run dev
 ```
@@ -19,6 +20,7 @@ npm run dev
 ## 🏗️ Build and Deploy
 
 ```bash
+cd portfolio
 npm run build
 ```
 
@@ -36,7 +38,9 @@ npm run build
 
 - **Branch**: `main`  
 - **Folder**: `/docs`  
-- **URL**: [https://cameronloveland.github.io/](https://cameronloveland.github.io/)
+- **URL**: [https://cameronloveland.github.io/space-portfolio/](https://cameronloveland.github.io/space-portfolio/)
+
+The Action sets `NEXT_BASE_PATH` automatically so assets resolve under `/space-portfolio/` on project Pages. For a root user site (`<user>.github.io` repo), the same workflow leaves the base path empty.
 
 ---
 
@@ -60,7 +64,7 @@ The deploy workflow is handled by **GitHub Actions** in [`.github/workflows/depl
 
 - `.nojekyll` is required for GitHub Pages to serve `_next/` static files  
 - All routes and pages live in `src/app/` using the Next.js App Router  
-- `next.config.js` is preconfigured for static export compatibility
+- `portfolio/next.config.ts` uses static export (`output: 'export'`) and optional `NEXT_BASE_PATH` for project Pages
 
 ---
 

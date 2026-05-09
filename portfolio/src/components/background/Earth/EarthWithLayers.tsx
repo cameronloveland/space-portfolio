@@ -5,14 +5,15 @@ import { useFrame } from "@react-three/fiber";
 import { useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import GlowSphere from "./GlowSphere";
+import { publicPath } from "@/lib/publicPath";
 
 export default function EarthWithLayers() {
     const earthRef = useRef<THREE.Mesh>(null);
     const cloudsRef = useRef<THREE.Mesh>(null);
 
     const [dayMap, cloudMap] = useTexture([
-        "/textures/earth.png",
-        "/textures/earth-clouds.png",
+        publicPath("/textures/earth.png"),
+        publicPath("/textures/earth-clouds.png"),
     ]);
 
     // Animate rotation

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { publicPath } from "@/lib/publicPath";
 
 export default function FloatingAstronaut() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -9,7 +10,9 @@ export default function FloatingAstronaut() {
     const imgRef = useRef<HTMLImageElement>(null);
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const [isLaunching, setIsLaunching] = useState(false);
-    const [thrustedImage, setThrustedImage] = useState("/astronaut-thrusted-1.png");
+    const [thrustedImage, setThrustedImage] = useState(() =>
+        publicPath("/astronaut-thrusted-1.png")
+    );
 
     const spawnParticles = () => {
         const container = puffContainerRef.current;
@@ -88,7 +91,7 @@ export default function FloatingAstronaut() {
         spawnParticles();
 
         const nextVariant = Math.random() > 0.5 ? 1 : 2;
-        setThrustedImage(`/thrusted-astronaut-${nextVariant}.png`);
+        setThrustedImage(publicPath(`/thrusted-astronaut-${nextVariant}.png`));
 
         if (audioRef.current?.src) {
             const puffSound = new Audio(audioRef.current.src);
@@ -120,14 +123,14 @@ export default function FloatingAstronaut() {
             <div className="astronaut-parallax relative" ref={containerRef}>
                 <div ref={puffContainerRef} className="absolute inset-0 pointer-events-none z-0" />
                 <Image
-                    src={isLaunching ? thrustedImage : "/worried-astronaut.png"}
+                    src={isLaunching ? thrustedImage : publicPath("/worried-astronaut.png")}
                     alt="Floating Astronaut"
                     width={220}
                     height={220}
                     ref={imgRef}
                     className="relative z-10 transition-transform duration-800"
                 />
-                <audio ref={audioRef} src="/sfx/steam-puff.mp3" preload="auto" />
+                <audio ref={audioRef} src={publicPath("/sfx/steam-puff.mp3")} preload="auto" />
             </div>
         </div>
 

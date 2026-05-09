@@ -2,6 +2,7 @@
 import { useEffect, useRef, useState } from "react";
 import { HiSpeakerWave, HiSpeakerXMark } from "react-icons/hi2";
 import HoverSoundGlobal from "./EnableHoverSound";
+import { publicPath } from "@/lib/publicPath";
 
 export default function AudioToggle() {
   const [enabled, setEnabled] = useState(false);
@@ -39,7 +40,7 @@ export default function AudioToggle() {
       >
         {enabled ? <HiSpeakerWave className="text-xl" /> : <HiSpeakerXMark className="text-xl" />}
       </button>
-      <audio ref={ambientRef} src="/sfx/spaceship-ambience.mp3" preload="auto" />
+      <audio ref={ambientRef} src={publicPath("/sfx/spaceship-ambience.mp3")} preload="auto" />
       <HoverSoundGlobal enabled={enabled} />
     </>
   );

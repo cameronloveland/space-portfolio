@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import { publicPath } from "@/lib/publicPath";
 
 export default function HoverSoundGlobal({ enabled }: { enabled: boolean }) {
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -16,7 +17,7 @@ export default function HoverSoundGlobal({ enabled }: { enabled: boolean }) {
         }
 
         // Create audio element with proper attributes
-        audioRef.current = new Audio('/sfx/ui-click-menu-modern-interface-select-small-01-230473.mp3');
+        audioRef.current = new Audio(publicPath('/sfx/ui-click-menu-modern-interface-select-small-01-230473.mp3'));
         audioRef.current.volume = 0.1;
         audioRef.current.preload = 'auto';
 

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
+import { publicPath } from "@/lib/publicPath";
 
 export default function CockpitOverlay() {
     const [isOpen, setIsOpen] = useState(true);
@@ -19,7 +20,7 @@ export default function CockpitOverlay() {
 
     return (
         <div className="cockpit pointer-events-none fixed inset-0 overflow-hidden z-0">
-            <audio ref={audioRef} src="/sfx/door-open.mp3" preload="auto" />
+            <audio ref={audioRef} src={publicPath("/sfx/door-open.mp3")} preload="auto" />
 
             {/* Top center trapezoid window */}
             <div

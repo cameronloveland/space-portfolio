@@ -1,7 +1,10 @@
+/** Repo that powers this deployed site (Captain's Log commits / PRs). */
+const GITHUB_OWNER = "cameronloveland";
+const SITE_REPOSITORY = "space-portfolio";
 
 export async function getRecentCommits() {
     const res = await fetch(
-        "https://api.github.com/repos/cameronloveland/cameronloveland.github.io/commits?per_page=6",
+        `https://api.github.com/repos/${GITHUB_OWNER}/${SITE_REPOSITORY}/commits?per_page=6`,
         {
             headers: {
                 Accept: "application/vnd.github.v3+json"
@@ -35,7 +38,7 @@ export async function getRecentCommits() {
 
 export async function getOpenPRs() {
     const res = await fetch(
-        "https://api.github.com/repos/cameronloveland/cameronloveland.github.io/pulls?state=open&per_page=6",
+        `https://api.github.com/repos/${GITHUB_OWNER}/${SITE_REPOSITORY}/pulls?state=open&per_page=6`,
         {
             headers: {
                 Accept: "application/vnd.github.v3+json"
@@ -73,7 +76,7 @@ export type Repo = {
 };
 
 export async function getReposWithReadme() {
-    const res = await fetch('https://api.github.com/users/cameronloveland/repos', {
+    const res = await fetch(`https://api.github.com/users/${GITHUB_OWNER}/repos`, {
         headers: {
             Accept: 'application/vnd.github.v3+json'
         },
@@ -87,7 +90,7 @@ export async function getReposWithReadme() {
             try {
 
                 const readmeRes = await fetch(
-                    `https://api.github.com/repos/cameronloveland/${repo.name}/readme`,
+                    `https://api.github.com/repos/${GITHUB_OWNER}/${repo.name}/readme`,
                     {
                         headers: { Accept: 'application/vnd.github.v3.raw' },
                     },
